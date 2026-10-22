@@ -4,6 +4,9 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Dwanaście Prac Heraklesa - Interaktywna Gra RPG (Liceum)</title>
+    <!-- Firebase Realtime Database SDK -->
+    <script src="https://www.gstatic.com/firebasejs/9.23.0/firebase-app-compat.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/9.23.0/firebase-database-compat.js"></script>
     <style>
         :root {
             --gold: #f1c40f;
@@ -322,7 +325,7 @@
     <!-- EKRAN GŁÓWNY -->
     <div id="screen-main" class="card">
         <h1>Dwanaście Prac Heraklesa</h1>
-        <p>Zaawansowana gra RPG dla szkół średnich. Dołącz z telefonu w kilka sekund!</p>
+        <p>Zaawansowana gra RPG dla szkół średnich. Połącz telefon z komputerem nauczyciela w czasie rzeczywistym!</p>
         <div style="margin-top: 20px;">
             <button class="btn" onclick="openHostLogin()">HOST (Nauczyciel)</button>
             <button class="btn" onclick="openJoin()">JOIN (Uczeń)</button>
@@ -400,7 +403,7 @@
         <div class="avatar-grid" id="avatar-select-grid"></div>
 
         <div>
-            <button class="btn" onclick="submitJoin()">Dołącz do Gry!</button>
+            <button class="btn" onclick="submitJoin()">Połącz z Komputerem!</button>
             <button class="btn btn-danger" onclick="show('screen-main')">Wróć</button>
         </div>
     </div>
@@ -504,6 +507,13 @@
 </div>
 
 <script>
+// --- INICJALIZACJA CHMURY FIREBASE ---
+const firebaseConfig = {
+    databaseURL: "https://herakles-game-default-rtdb.europe-west1.firebasedatabase.app"
+};
+firebase.initializeApp(firebaseConfig);
+const db = firebase.database();
+
 // --- POSTACIE MITYCZNE ---
 const HEROES = [
     { id: 'h1', name: 'Tezeusz', icon: '⚔️', power: 'Arogancka Odwaga' },
@@ -518,7 +528,7 @@ const HEROES = [
 const LABORS = [
     {
         title: "1. Lew Nemejski",
-        goal: "Twój cel: Odszukać i zgładzić potwornego Lwa Nemejskiego. Pamiętaj: stwory zrodzone z Tyfona i Echidny posiadają właściwości odpornościowe na wszelką metalurgię!",
+        goal: "Twój cel: Odszukać i zgładzić potwornego Lwa Nemejskiego. Pamiętaj: stwory zrodzone z Tyfona i Echidny posiadają właściwości odpornościowe na wszelką metallurgię!",
         steps: [
             {
                 story: "Docierasz pod jaskinię w Nemei. Lew wychodzi z cienia i ryczy. Jakie jest Twoje pierwsze uderzenie taktyczne?",
@@ -731,10 +741,6 @@ let state = {
     chosenOpt: null
 };
 
-// Lokalna baza stanów symulowana przez publiczne API JSONBin / zapytania
-let hostInterval = null;
-let playerInterval = null;
-
 window.onload = function() {
     setupAvatarGrid();
     initCanvas();
@@ -745,7 +751,7 @@ function show(id) {
     document.getElementById(id).classList.remove('hidden');
 }
 
-// --- LOGIKA HOSTA (Lokalny serwer stanu w localStorage współdzielony przez zakładek / przeglądarkę) ---
+// --- LOGIKA HOSTA ---
 function openHostLogin() { show('screen-host-login'); }
 
 function submitHostLogin() {
@@ -758,21 +764,17 @@ function submitHostLogin() {
         document.getElementById('host-code-display').innerText = code;
         show('screen-host-panel');
 
-        // Inicjalizacja pokoju w pamięci współdzielonej
-        const roomData = {
+        // Tworzenie pokoju w Firebase
+        db.ref('rooms/' + code).set({
             status: 'lobby',
-            players: {}
-        };
-        localStorage.setItem('herakles_room_' + code, JSON.stringify(roomData));
+            created: Date.now()
+        });
 
-        // Odświeżanie listy graczy co sekundę
-        hostInterval = setInterval(() => {
-            const dataStr = localStorage.getItem('herakles_room_' + code);
-            if (dataStr) {
-                const room = JSON.parse(dataStr);
-                updateHostView(room.players || {});
-            }
-        }, 1000);
+        // Nasłuchiwanie graczy
+        db.ref('rooms/' + code + '/players').on('value', (snapshot) => {
+            const playersData = snapshot.val() || {};
+            updateHostView(playersData);
+        });
 
     } else {
         alert("Błędny kod! Wpisz 7778");
@@ -805,12 +807,9 @@ function updateHostView(playersData) {
 }
 
 function startHostGame() {
-    const dataStr = localStorage.getItem('herakles_room_' + state.roomCode);
-    if (dataStr) {
-        const room = JSON.parse(dataStr);
-        room.status = 'in_game';
-        localStorage.setItem('herakles_room_' + state.roomCode, JSON.stringify(room));
-    }
+    db.ref('rooms/' + state.roomCode).update({
+        status: 'in_game'
+    });
     document.getElementById('host-lobby-view').classList.add('hidden');
     document.getElementById('host-game-view').classList.remove('hidden');
 }
@@ -823,7 +822,7 @@ function showHostPodium(pArr) {
 
     if (sorted[0]) { document.getElementById('pod-1-name').innerText = sorted[0].name; document.getElementById('pod-1-time').innerText = sorted[0].time; }
     if (sorted[1]) { document.getElementById('pod-2-name').innerText = sorted[1].name; document.getElementById('pod-2-time').innerText = sorted[1].time; }
-    if (sorted[2]) { document.getElementById('pod-3-name').innerText = sorted[2].name; document.getElementById('pod-3-time').innerText = sorted[2].time; }
+    if (sorted[3]) { document.getElementById('pod-3-name').innerText = sorted[2].name; document.getElementById('pod-3-time').innerText = sorted[2].time; }
 }
 
 // --- LOGIKA UCZNIA ---
@@ -858,49 +857,33 @@ function submitJoin() {
     state.roomCode = code;
     state.playerName = name;
 
-    // Pobieranie stanu pokoju z localStorage (dla testów na jednym kompie lub w tej samej sieci/przeglądarce)
-    // Gdyby uczniowie wchodzili z osobnych telefonów przez GitHub Pages, używamy BroadcastChannel na poziomie karty lub prostego symulatora
-    let roomStr = localStorage.getItem('herakles_room_' + code);
-    
-    // Jeśli nie ma pokoju lokalnie (telefon ucznia), tworzymy wskaźnik i zapisujemy do pamięci sesji przeglądarki telefonu
-    if (!roomStr) {
-        // Tworzymy domyślny pokój w locie, aby uczeń mógł płynnie przejść do gry
-        roomStr = JSON.stringify({ status: 'in_game', players: {} });
-        localStorage.setItem('herakles_room_' + code, roomStr);
-    }
+    // Sprawdzanie czy pokój istnieje w Firebase
+    db.ref('rooms/' + code).once('value', (snapshot) => {
+        if (snapshot.exists()) {
+            // Rejestracja gracza w Firebase
+            db.ref('rooms/' + code + '/players/' + name).set({
+                name: name,
+                hero: state.selectedHero,
+                labor: 0,
+                errors: 0,
+                finished: false,
+                time: ''
+            });
 
-    const room = JSON.parse(roomStr);
-    if (!room.players) room.players = {};
-    
-    room.players[name] = {
-        name: name,
-        hero: state.selectedHero,
-        labor: 0,
-        errors: 0,
-        finished: false,
-        time: ''
-    };
-    localStorage.setItem('herakles_room_' + code, JSON.stringify(room));
+            document.getElementById('wait-name-display').innerText = `${state.selectedHero.icon} ${name}`;
+            show('screen-player-wait');
 
-    document.getElementById('wait-name-display').innerText = `${state.selectedHero.icon} ${name}`;
-    show('screen-player-wait');
-
-    // Jeśli gra już ruszyła lub nauczyciel kliknął start, przechodzimy do rysowania broni
-    if (room.status === 'in_game') {
-        show('screen-draw-weapon');
-    } else {
-        // Nasłuchiwanie zmian statusu pokoju
-        playerInterval = setInterval(() => {
-            const rStr = localStorage.getItem('herakles_room_' + code);
-            if (rStr) {
-                const r = JSON.parse(rStr);
-                if (r.status === 'in_game') {
-                    clearInterval(playerInterval);
+            // Nasłuchiwanie startu gry od nauczyciela
+            db.ref('rooms/' + code + '/status').on('value', (statusSnap) => {
+                if (statusSnap.val() === 'in_game') {
                     show('screen-draw-weapon');
                 }
-            }
-        }, 1000);
-    }
+            });
+
+        } else {
+            alert("Nie znaleziono pokoju o tym kodzie PIN! Upewnij się, że komputer Nauczyciela wygenerował kod.");
+        }
+    });
 }
 
 // --- CANVAS ---
@@ -1097,20 +1080,15 @@ function finishGame() {
     sendProgress(true);
 }
 
-// --- ZAPIS POSTĘPU ---
+// --- ZAPIS POSTĘPU DO CHMURY FIREBASE ---
 function sendProgress(finished = false) {
     if (state.roomCode && state.playerName) {
-        const roomStr = localStorage.getItem('herakles_room_' + state.roomCode);
-        if (roomStr) {
-            const room = JSON.parse(roomStr);
-            if (room.players && room.players[state.playerName]) {
-                room.players[state.playerName].labor = state.currentLaborIdx;
-                room.players[state.playerName].errors = state.gameOversCount;
-                room.players[state.playerName].finished = finished;
-                room.players[state.playerName].time = state.finishTimeStr;
-                localStorage.setItem('herakles_room_' + state.roomCode, JSON.stringify(room));
-            }
-        }
+        db.ref('rooms/' + state.roomCode + '/players/' + state.playerName).update({
+            labor: state.currentLaborIdx,
+            errors: state.gameOversCount,
+            finished: finished,
+            time: state.finishTimeStr
+        });
     }
 }
 </script>
