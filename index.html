@@ -3,8 +3,8 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Dwanaście Prac Heraklesa - Interaktywna Gra RPG (Liceum)</title>
-    <!-- Firebase Realtime Database SDK -->
+    <title>Dwanaście Prac Heraklesa - praca polski)</title>
+    <!-- Firebase SDK -->
     <script src="https://www.gstatic.com/firebasejs/9.23.0/firebase-app-compat.js"></script>
     <script src="https://www.gstatic.com/firebasejs/9.23.0/firebase-database-compat.js"></script>
     <style>
@@ -325,18 +325,18 @@
     <!-- EKRAN GŁÓWNY -->
     <div id="screen-main" class="card">
         <h1>Dwanaście Prac Heraklesa</h1>
-        <p>Zaawansowana gra RPG dla szkół średnich. Połącz telefon z komputerem nauczyciela w czasie rzeczywistym!</p>
+        <p>gra na polski. Połącz telefon z komputerem nauczyciela w czasie rzeczywistym!</p>
         <div style="margin-top: 20px;">
-            <button class="btn" onclick="openHostLogin()">HOST (Nauczyciel)</button>
-            <button class="btn" onclick="openJoin()">JOIN (Uczeń)</button>
+            <button class="btn" onclick="openHostLogin()">HOST (Prowadzący)</button>
+            <button class="btn" onclick="openJoin()">JOIN (Uczestnik)</button>
         </div>
     </div>
 
     <!-- LOGOWANIE HOSTA -->
     <div id="screen-host-login" class="card hidden">
         <h2>Panel Nauczyciela</h2>
-        <p>Podaj kod dostępu nauczyciela (7778):</p>
-        <input type="password" id="host-pass-input" placeholder="Wpisz kod 7778">
+        <p>Podaj kod dostępu prowadzącego\:</p>
+        <input type="password" id="host-pass-input" placeholder="Wpisz kod">
         <div>
             <button class="btn" onclick="submitHostLogin()">Zaloguj</button>
             <button class="btn btn-danger" onclick="show('screen-main')">Wróć</button>
@@ -507,9 +507,16 @@
 </div>
 
 <script>
-// --- INICJALIZACJA CHMURY FIREBASE ---
+// --- KONFIGURACJA FIREBASE ---
 const firebaseConfig = {
-    databaseURL: "https://herakles-game-default-rtdb.europe-west1.firebasedatabase.app"
+  apiKey: "AIzaSyAofTu5cUfHVIdIBdYVQewQq0Xl5cmtPEE",
+  authDomain: "prac-54c1b.firebaseapp.com",
+  databaseURL: "https://prac-54c1b-default-rtdb.europe-west1.firebasedatabase.app",
+  projectId: "prac-54c1b",
+  storageBucket: "prac-54c1b.firebasestorage.app",
+  messagingSenderId: "58861615570",
+  appId: "1:58861615570:web:de0155bafade62cd91b00b",
+  measurementId: "G-YK9JD1EK6F"
 };
 firebase.initializeApp(firebaseConfig);
 const db = firebase.database();
@@ -528,7 +535,7 @@ const HEROES = [
 const LABORS = [
     {
         title: "1. Lew Nemejski",
-        goal: "Twój cel: Odszukać i zgładzić potwornego Lwa Nemejskiego. Pamiętaj: stwory zrodzone z Tyfona i Echidny posiadają właściwości odpornościowe na wszelką metallurgię!",
+        goal: "Twój cel: Odszukać i zgładzić potwornego Lwa Nemejskiego. Pamiętaj: stwory zrodzone z Tyfona i Echidny posiadają właściwości odpornościowe na wszelką metalurgię!",
         steps: [
             {
                 story: "Docierasz pod jaskinię w Nemei. Lew wychodzi z cienia i ryczy. Jakie jest Twoje pierwsze uderzenie taktyczne?",
@@ -770,7 +777,7 @@ function submitHostLogin() {
             created: Date.now()
         });
 
-        // Nasłuchiwanie graczy
+        // Nasłuchiwanie graczy z Firebase
         db.ref('rooms/' + code + '/players').on('value', (snapshot) => {
             const playersData = snapshot.val() || {};
             updateHostView(playersData);
@@ -822,7 +829,7 @@ function showHostPodium(pArr) {
 
     if (sorted[0]) { document.getElementById('pod-1-name').innerText = sorted[0].name; document.getElementById('pod-1-time').innerText = sorted[0].time; }
     if (sorted[1]) { document.getElementById('pod-2-name').innerText = sorted[1].name; document.getElementById('pod-2-time').innerText = sorted[1].time; }
-    if (sorted[3]) { document.getElementById('pod-3-name').innerText = sorted[2].name; document.getElementById('pod-3-time').innerText = sorted[2].time; }
+    if (sorted[2]) { document.getElementById('pod-3-name').innerText = sorted[2].name; document.getElementById('pod-3-time').innerText = sorted[2].time; }
 }
 
 // --- LOGIKA UCZNIA ---
@@ -860,7 +867,7 @@ function submitJoin() {
     // Sprawdzanie czy pokój istnieje w Firebase
     db.ref('rooms/' + code).once('value', (snapshot) => {
         if (snapshot.exists()) {
-            // Rejestracja gracza w Firebase
+            // Rejestracja ucznia w bazie pokoju
             db.ref('rooms/' + code + '/players/' + name).set({
                 name: name,
                 hero: state.selectedHero,
@@ -1080,7 +1087,7 @@ function finishGame() {
     sendProgress(true);
 }
 
-// --- ZAPIS POSTĘPU DO CHMURY FIREBASE ---
+// --- ZAPIS POSTĘPU DO FIREBASE ---
 function sendProgress(finished = false) {
     if (state.roomCode && state.playerName) {
         db.ref('rooms/' + state.roomCode + '/players/' + state.playerName).update({
