@@ -533,206 +533,403 @@ const HEROES = [
 
 // --- BAZA PRAC I PYTAŃ - POZIOM LICEUM ---
 const LABORS = [
-    {
-        title: "1. Lew Nemejski",
-        goal: "Twój cel: Odszukać i zgładzić potwornego Lwa Nemejskiego. Pamiętaj: stwory zrodzone z Tyfona i Echidny posiadają właściwości odpornościowe na wszelką metalurgię!",
-        steps: [
-            {
-                story: "Docierasz pod jaskinię w Nemei. Lew wychodzi z cienia i ryczy. Jakie jest Twoje pierwsze uderzenie taktyczne?",
-                q: "Wybierz broń i metodę ataku z dystansu lub zwarcia:",
-                opts: [
-                    { txt: "Naciągasz łuk i celujesz w oko bestii.", react: "Strzała trafia w oko, lecz zsuwa się po powiece odpornej jak stal! Lew zaryczał ze złości i skoczył w Twoją stronę!", correct: false, reason: "Grot odbił się od pancernej skóry Lwa Nemejskiego!" },
-                    { txt: "Używasz hiszpańskiego miecza z brązu, celując w tętnicę szyjną.", react: "Głownia wygina się w łuk i pęka na skórze potwora! Lew wyprowadza kontrę!", correct: false, reason: "Żaden metal nie przebije pancerza Lwa Nemejskiego!" },
-                    { txt: "Dobobywasz ciężkiej sękatej maczugi z drewna oliwnego i zagradzasz mu drogę.", react: "Świetny wybór! Siła obuchowa to jedyne, co poczuje ta bestia!", correct: true },
-                    { txt: "Próbujesz rzucić w niego ciężką włócznią z grotem z utwardzanego ognia.", react: "Włócznia pęka na pół bez zadania jakiejkolwiek rany!", correct: false, reason: "Nawet utwardzany grot nie przebija skóry lwa!" }
-                ]
-            },
-            {
-                story: "Zamachujesz się maczugą i uderzasz lwa w łeb. Potwór zatacza się, ogłuszony ciosem. Co robisz, nim odzyska przytomność?",
-                q: "Jaki jest Twój decydujący krok walki w zwarciu?",
-                opts: [
-                    { txt: "Próbujesz poderżnąć mu gardło sztyletem ze stali.", react: "Ostrze sztyletu łamie się, a lew odzyskuje przytomność i wyprowadza cios pazurami!", correct: false, reason: "Stal uległa pęknięciu na skórze potwora!" },
-                    { txt: "Rzucasz się na niego i dusisz go gołymi rękami, zamykając dopływ powietrza.", react: "Rzucasz się na bestię! Twarde ramiona zaciskają tchawicę potwora aż do zgaśnięcia życia!", correct: true },
-                    { txt: "Próbujesz złamać mu kręgosłup naciskiem maczugi na grzbiet.", react: "Maczuga pęka pod siłą nacisku na sztywny grzbiet lwa!", correct: false, reason: "Grzbiet lwa był zbyt twardy dla drewnianej broni!" }
-                ]
-            },
-            {
-                story: "Lew zostaje uduszony! Pora zdjąć niezniszczalną skórę, by służyła jako pancerz. Żelazne noże są bezużyteczne.",
-                q: "Czym rozetniesz skórę zgładzonego Lwa?",
-                opts: [
-                    { txt: "Używasz ostrych pazurów samego zgładzonego lwa.", react: "Niezwykły pomysł! Jedynie własne pazury lwa są w stanie rozciąć jego niezniszczalną skórę!", correct: true },
-                    { txt: "Używasz krzemiennych odłamków znalezionych przy jaskini.", react: "Krzemień kruszy się w pył na skórze lwa!", correct: false, reason: "Krzemień nie dorównuje twardości skóry lwa!" },
-                    { txt: "Opalasz skórę ogniskiem, by osłabić jej strukturę.", react: "Ogień nie robi na skórze żadnego wrażenia, lecz niszczy jej jakość!", correct: false, reason: "Ogień nie osłabił magicznej skóry lwa!" }
-                ]
-            }
-        ]
-    },
-    {
-        title: "2. Hydra Lernejska",
-        goal: "Twój cel: Zgładzić wielogłową Hydrę na bagnach Lerny. Uwaga: Woda jest zatruta jadem, a odcinanie głów wywołuje reakcję regeneracyjną!",
-        steps: [
-            {
-                story: "Wyciągasz wykuty miecz i odcinasz pierwszą głowę Hydry. Nagle z rany wyrastają od razu dwie nowe głowy! Co robisz?",
-                q: "Wybierz właściwy wariant wsparcia taktycznego:",
-                opts: [
-                    { txt: "Nadal ścinasz głowy mieczem, licząc na to, że potwór się zmęczy.", react: "Po kilku minutach Hydra ma ponad dwadzieścia głów i całkowicie Cię przytłacza!", correct: false, reason: "Liczba głów rosła w postępie geometrycznym!" },
-                    { txt: "Wzywasz pomocnika Jolaosa, by przypalał rany po ściętych głowach pochodnią.", react: "Świetna taktyka! Ogień przypala tkankę i powstrzymuje odrastanie nowych głów!", correct: true },
-                    { txt: "Wylewasz na szyję potwora kwas z trujących ziół.", react: "Kwas miesza się z jadem Hydry i wzmacnia jej pancerz!", correct: false, reason: "Zioła nie powstrzymały regeneracji!" }
-                ]
-            },
-            {
-                story: "Została ostatnia nieśmiertelna głowa Hydry. Ścinasz ją mieczem. Jak neutralizujesz zagrożenie?",
-                q: "Co robisz z nieśmiertelną głową?",
-                opts: [
-                    { txt: "Spalasz ją w wielkim stosie drewna.", react: "Ogień gaśnie, a nieśmiertelna głowa nadal syczy w popiołach!", correct: false, reason: "Głowa była odporna na płomienie!" },
-                    { txt: "Zakopujesz ją głęboko i przywalasz ogromnym, ciężkim głazem.", react: "Nieśmiertelna głowa zostaje trwale unieruchomiona pod ciężarem skały!", correct: true },
-                    { txt: "Wrzucasz ją do najgłębszego miejsca w oceanie.", react: "Głowa zatruwa morskie prądy i powraca wyrzucona przez fale!", correct: false, reason: "Nieśmiertelna głowa wymagała uwięzienia pod skałą!" }
-                ]
-            }
-        ]
-    },
-    {
-        title: "3. Łania Kerynejska",
-        goal: "Twój cel: Schwytać żywą Łanię Kerynejską o złotych rogach i spiżowych kopytach. Pamiętaj: Łania należy do bogini Artemidy!",
-        steps: [
-            {
-                story: "Ścigasz łanię przez rok. Zwierzę zatrzymuje się przy rzece Ladon. Jak ją schwytasz, by nie złamać zakazu zranienia?",
-                q: "Wybierz metodę pojmania:",
-                opts: [
-                    { txt: "Strzelasz z łuku w jej kopyto z brązu.", react: "Strzała rani łanię! Artemida zstępuje z nieba z gniewem!", correct: false, reason: "Zranienie łani sprowadziło gniew bogini!" },
-                    { txt: "Zarzucasz na nią sieć, gdy wycieńczona pije wodę z rzeki Ladon.", react: "Łania zaplątuje się w sieć bez ani jednej rany na ciele!", correct: true }
-                ]
-            }
-        ]
-    },
-    {
-        title: "4. Dzik Erymantejski",
-        goal: "Twój cel: Pojmać żywego dzika z góry Erymantos i przynieść go przed Eurysteusza.",
-        steps: [
-            {
-                story: "Szarżujący dzik taranuje drzewa na górzystym stoku Erymantos. Jak go unieruchomisz?",
-                q: "Jaka jest właściwa taktyka wykorzystania terenu?",
-                opts: [
-                    { txt: "Wgonisz dzika w głębokie zaspy śnieżne w wyższych partiach góry.", react: "Dzik wjeżdża w głęboki śnieg i grzęźnie, nie mogąc się poruszać!", correct: true },
-                    { txt: "Zbudujesz na niego drewnianą palisadę.", react: "Dzik roznosi palisadę w pył i taranuje Cię!", correct: false, reason: "Drewno nie powstrzymało impetu dzika!" }
-                ]
-            }
-        ]
-    },
-    {
-        title: "5. Stajnie Augiasza",
-        goal: "Twój cel: Oczyszczenie w JEDEN DZIEŃ stajni króla Augiasza, w których obornik gromadził się od 30 lat.",
-        steps: [
-            {
-                story: "Stoisz przed gigantyczną masą nieczystości. W pobliżu płyną rzeki Alfejos i Penejos.",
-                q: "Jaki jest Twój plan inżynieryjny?",
-                opts: [
-                    { txt: "Przekierowujesz nurty rzek Alfejos i Penejos poprzez wyłom w murach.", react: "Bystry nurt wody spłukuje cały obornik w kilka godzin!", correct: true },
-                    { txt: "Zatrudniasz okolicznych wieśniaków z łopatami.", react: "Praca trwa całą dobę i oczyszcza zaledwie ułamek stajni!", correct: false, reason: "Ludzka siła nie wystarczyła na jeden dzień!" }
-                ]
-            }
-        ]
-    },
-    {
-        title: "6. Ptaki Stymfalijskie",
-        goal: "Twój cel: Wygnanie lub zgładzenie ptaków ze spiżowymi dziobami i metalowymi piórami z lasów Stymfalos.",
-        steps: [
-            {
-                story: "Ptaki ukrywają się w gęstych koronach drzew i zrzucają ostre pióra.",
-                q: "Jak je wypłoszysz z ukrycia?",
-                opts: [
-                    { txt: "Używasz miedzianych kołatek od Hefajstosa podarowanych przez Atenę.", react: "Ogłuszający hałas przeraża ptaki, które wzbijają się w niebo pod Twój łuk!", correct: true },
-                    { txt: "Podpalasz las Stymfalos.", react: "Dym poddusza Cię, a ptaki odlatują niezranione!", correct: false, reason: "Podpalenie lasu naraziło Cię na niebezpieczeństwo!" }
-                ]
-            }
-        ]
-    },
-    {
-        title: "7. Byk Kreteński",
-        goal: "Twój cel: Poskromić szalonego byka z Krety i sprowadzić go do Grecji.",
-        steps: [
-            {
-                story: "Byk szarżuje na polach Krety. Jak go obezwładnisz i przetransportujesz?",
-                q: "Wybierz właściwy wariant działania:",
-                opts: [
-                    { txt: "Chwytasz go za rogi, powalasz siłą i przepływasz na jego grzbiecie morze.", react: "Niezwykła siła powala byka! Przepływasz na jego grzbiecie wprost do Peloponezu!", correct: true },
-                    { txt: "Budujesz klatkę z grubych pni drzew.", react: "Byk roznosi klatkę pierwszym uderzeniem rogu!", correct: false, reason: "Drewno nie wytrzymało siły byka Posejdona!" }
-                ]
-            }
-        ]
-    },
-    {
-        title: "8. Klacze Diomedesa",
-        goal: "Twój cel: Zdobyć cztery dzikie klacze króla Diomedesa, żywiące się ludzkim mięsem.",
-        steps: [
-            {
-                story: "Dzikie konie rzucają się na każdego w pałacu Diomedesa.",
-                q: "Jak uspokoisz mięsożerne bestie?",
-                opts: [
-                    { txt: "Rzucasz im na pożarcie samego okrutnego króla Diomedesa.", react: "Konie pożerają swojego pana, uspokajają się i dają wyprowadzić!", correct: true },
-                    { txt: "Dajesz im świeżą trawę i owies.", react: "Konie ignorują rośliny i rzucają się na Twoje ramiona!", correct: false, reason: "Klacze jadły wyłącznie ludzkie mięso!" }
-                ]
-            }
-        ]
-    },
-    {
-        title: "9. Pas Hipolity",
-        goal: "Twój cel: Zdobyć pas wojenny od królowej Amazonek – Hipolity.",
-        steps: [
-            {
-                story: "Hera rozsiewa plotkę wśród Amazonek, że chcesz porwać Hipolitę. Wybuchają walki.",
-                q: "Jak zdobywasz pas w zamieszaniu?",
-                opts: [
-                    { txt: "Stajesz do bezwzględnej walki i torujesz sobie drogę wyjścia z pasem.", react: "Pokonujesz natarcie i uchodzisz z pasem na statek!", correct: true },
-                    { txt: "Zrzucasz broń i próbujesz tłumaczyć nieporozumienie.", react: "Amazonki biorą Cię w niewolę i odbierają broń!", correct: false, reason: "Poddanie się doprowadziło do porażki!" }
-                ]
-            }
-        ]
-    },
-    {
-        title: "10. Trzoda Geriona",
-        goal: "Twój cel: Uprowadzić czerwone woły Geriona z wyspy Eryteja.",
-        steps: [
-            {
-                story: "Stajesz do walki z dwugłowym psem Orthrosem i trójcielistym Gerionem.",
-                q: "Jak pokonujesz Geriona?",
-                opts: [
-                    { txt: "Zabijasz psa maczugą, a Geriona przebijasz jedną strzałą przez trzy ciała.", react: "Celna strzała przechodzi przez miejsca łączenia trzech ciał Geriona!", correct: true },
-                    { txt: "Próbujesz walczyć mieczem z trzema ciałami naraz.", react: "Sześć rąk Geriona zasypuje Cię ciosami tarcz!", correct: false, reason: "Walka w zwarciu z trzema ciałami była niemożliwa!" }
-                ]
-            }
-        ]
-    },
-    {
-        title: "11. Złote Jabłka Hesperyd",
-        goal: "Twój cel: Zdobyć złote jabłka z ogrodu strzeżonego przez smoka Ladona.",
-        steps: [
-            {
-                story: "Atlas przynosi jabłka, ale nie chce wziąć nieba z powrotem na barki.",
-                q: "Jakiego podstępu użyjesz?",
-                opts: [
-                    { txt: "Prosisz go o chwilę na podłożenie poduszki pod kark, po czym zabierasz jabłka.", react: "Atlas bierze niebo na chwilę, a Ty zabierasz jabłka i odchodzisz!", correct: true },
-                    { txt: "Zaatakujesz go mieczem trzymając niebo.", react: "Niebo spada i miażdży całą okolicę!", correct: false, reason: "Nie mogłeś walczyć trzymając cały świat!" }
-                ]
-            }
-        ]
-    },
-    {
-        title: "12. Cerber z Podziemi",
-        goal: "Twój cel: Sprowadzenie Cerbera z Hadesu BEZ UŻYCIA BRONI.",
-        steps: [
-            {
-                story: "Stajesz przed trójgłowym Cerberem w Hadesie.",
-                q: "Jak go poskromisz gołymi rękami?",
-                opts: [
-                    { txt: "Obywasz go siłą ramion, dusząc potwora aż do uległości.", react: "Bestia zostaje poskromiona i idzie za Tobą na powierzchnię!", correct: true },
-                    { txt: "Używasz ukrytego w szacie sztyletu.", react: "Hades wtrąca Cię do Tartaru za złamanie umowy!", correct: false, reason: "Użycie broni złamało słowo dane Hadesowi!" }
-                ]
-            }
-        ]
-    }
+{
+title: "1. Lew Nemejski",
+goal: "Herakles otrzymuje rozkaz zgładzenia lwa pustoszącego okolice Nemei. Zwierzę ma skórę odporną na zwykłą broń. Zapamiętaj, jak heros poradził sobie z tą niezwykłą bestią.",
+steps: [
+{
+story: "Docierasz do Nemei. Miejscowi opowiadają, że żaden myśliwy nie zdołał zranić bestii. Strzały odbijają się od jej ciała.",
+q: "Co stanowiło najważniejszą niezwykłą właściwość lwa nemejskiego?",
+opts: [
+{txt:"Jego skóra była odporna na ciosy i ostrza zwykłej broni.",react:"Zgadza się! Właśnie dlatego tradycyjna walka z lwem nie przynosiła rezultatów.",correct:true},
+{txt:"Potrafił zmieniać postać i znikać przed atakiem.",react:"Lew nie posługiwał się taką umiejętnością.",correct:false,reason:"Pomyliłeś odporność skóry z magiczną zdolnością zmiany postaci."},
+{txt:"Był nieśmiertelny i nie można go było zabić.",react:"Nieśmiertelność nie była jego najważniejszą cechą.",correct:false,reason:"Lew był śmiertelny, ale jego skóra stanowiła niemal niezniszczalną ochronę."}
+]
+},
+{
+story:"Strzały odbijają się od ciała potwora, a ostrze miecza nie może przebić jego skóry. Herakles musi zmienić sposób walki.",
+q:"Jak Herakles ostatecznie pokonał lwa?",
+opts:[
+{txt:"Udusił go własnymi rękami.",react:"Tak! Skoro broń nie mogła przebić skóry, Herakles wykorzystał własną siłę.",correct:true},
+{txt:"Zranił go zatrutą strzałą.",react:"Zatruta strzała nie rozwiązałaby problemu odpornej skóry.",correct:false,reason:"Herakles pokonał lwa bezpośrednio, dusząc go."},
+{txt:"Zwabił go do przepaści.",react:"To nie w ten sposób zakończyła się walka.",correct:false,reason:"Herakles pokonał lwa w bezpośrednim starciu."}
+]
+},
+{
+story:"Lew nie żyje. Herakles chce zdjąć z niego skórę, która może stać się jego charakterystycznym okryciem.",
+q:"Czego użył Herakles, aby rozciąć skórę lwa?",
+opts:[
+{txt:"Pazurów samego lwa.",react:"Dobrze! Wykorzystał właściwość bestii przeciwko niej samej.",correct:true},
+{txt:"Kamiennego noża znalezionego w jaskini.",react:"Kamień nie rozwiązał problemu odporności skóry.",correct:false,reason:"Skórę można było rozciąć pazurami samego lwa."},
+{txt:"Miecza podarowanego przez Atenę.",react:"Nie miecz umożliwił zdjęcie skóry.",correct:false,reason:"Herakles posłużył się pazurami pokonanego zwierzęcia."}
+]
+}
+]
+},
+{
+title:"2. Hydra Lernejska",
+goal:"Na bagnach Lerny żyje potwór o wielu głowach. Po ich odcięciu wyrastają kolejne. W walce z Hydrą Heraklesowi pomaga Jolaos.",
+steps:[
+{
+story:"Herakles odcina jedną z głów Hydry, lecz w jej miejscu pojawiają się kolejne. Samo używanie miecza pogarsza sytuację.",
+q:"Dlaczego odcinanie głów Hydrze nie przynosiło skutku?",
+opts:[
+{txt:"Na miejscu odciętej głowy wyrastały dwie nowe.",react:"Właśnie tak działała niezwykła zdolność regeneracji Hydry.",correct:true},
+{txt:"Każda głowa zamieniała się w osobnego potwora.",react:"To nie była właściwość Hydry lernejskiej.",correct:false,reason:"Nowe głowy wyrastały z miejsca odcięcia poprzedniej."},
+{txt:"Głowy były złudzeniem i nie można ich było zranić.",react:"Głowy można było odcinać, ale problemem było ich odrastanie.",correct:false,reason:"Regeneracja sprawiała, że walka stawała się coraz trudniejsza."}
+]
+},
+{
+story:"Herakles rozumie, że sam nie poradzi sobie z odrastającymi głowami. Do walki włącza się jego towarzysz Jolaos.",
+q:"W jaki sposób Jolaos pomagał Heraklesowi?",
+opts:[
+{txt:"Przypalał ogniem miejsca po odciętych głowach.",react:"Zgadza się! Ogień powstrzymywał odrastanie kolejnych głów.",correct:true},
+{txt:"Odciągał Hydrę, aby Herakles mógł uciec.",react:"Jolaos nie ograniczył się do odwracania uwagi potwora.",correct:false,reason:"Jego zadaniem było przypalanie ran po odciętych głowach."},
+{txt:"Zatruwał wodę w bagnie.",react:"Nie taka była jego rola podczas walki.",correct:false,reason:"Jolaos używał ognia, aby zatrzymać regenerację."}
+]
+},
+{
+story:"Pozostaje ostatnia, nieśmiertelna głowa. Herakles musi znaleźć sposób, aby nie mogła już nikomu zagrozić.",
+q:"Co Herakles zrobił z nieśmiertelną głową Hydry?",
+opts:[
+{txt:"Zakopał ją i przygniótł ogromnym głazem.",react:"Dobrze! Głowa została unieruchomiona pod ciężarem skały.",correct:true},
+{txt:"Spalił ją na stosie.",react:"Nieśmiertelna głowa nie została w ten sposób unicestwiona.",correct:false,reason:"Herakles zakopał ją pod ogromnym głazem."},
+{txt:"Wrzucił ją do morza.",react:"To nie był sposób zastosowany przez Heraklesa.",correct:false,reason:"Głowa została zakopana i przygnieciona skałą."}
+]
+}
+]
+},
+{
+title:"3. Łania Kerynejska",
+goal:"Herakles ma schwytać niezwykłą łanię, ale nie może jej zabić ani zranić. Zwierzę jest poświęcone Artemidzie, dlatego zadanie wymaga cierpliwości.",
+steps:[
+{
+story:"Herakles rozpoczyna poszukiwania łani. Jej wygląd wyróżnia ją spośród zwykłych zwierząt.",
+q:"Które cechy wyróżniały łanię kerynejską?",
+opts:[
+{txt:"Złote rogi i spiżowe kopyta.",react:"Zgadza się! To właśnie te niezwykłe cechy wyróżniały łanię.",correct:true},
+{txt:"Srebrne rogi i skrzydła orła.",react:"To nie był wygląd łani kerynejskiej.",correct:false,reason:"Łania miała złote rogi i spiżowe kopyta."},
+{txt:"Złote futro i oczy z drogocennych kamieni.",react:"Jej niezwykłość wiązała się z rogami i kopytami.",correct:false,reason:"Charakterystyczne były złote rogi oraz spiżowe kopyta."}
+]
+},
+{
+story:"Pościg trwa bardzo długo. Herakles nie może użyć siły w taki sposób, jak podczas walki z lwem czy Hydrą.",
+q:"Dlaczego Herakles musiał schwytać łanię żywą?",
+opts:[
+{txt:"Była poświęcona Artemidzie, więc jej zranienie mogło ściągnąć gniew bogini.",react:"Dobrze! Charakter zadania wynikał z boskiego związku łani z Artemidą.",correct:true},
+{txt:"Jej mięso było potrzebne do ofiary Zeusowi.",react:"Nie taki był powód warunku postawionego Heraklesowi.",correct:false,reason:"Łania była poświęcona Artemidzie i należało ją oszczędzić."},
+{txt:"Eurysteusz chciał otrzymać jej skórę.",react:"Celem nie było zdobycie skóry zwierzęcia.",correct:false,reason:"Herakles miał dostarczyć żywą łanię."}
+]
+},
+{
+story:"Po długim pościgu Herakles w końcu zbliża się do łani. Musi zakończyć zadanie, nie doprowadzając do jej śmierci.",
+q:"Co najlepiej oddaje charakter tej pracy?",
+opts:[
+{txt:"Wymagała cierpliwego schwytania zwierzęcia, a nie jego zgładzenia.",react:"Świetnie! Zwycięstwo polegało tu na opanowaniu siły.",correct:true},
+{txt:"Wymagała pokonania kolejnego potwora w walce.",react:"Łania nie była potworem, którego należało zabić.",correct:false,reason:"Zadanie polegało na schwytaniu żywego zwierzęcia."},
+{txt:"Polegała na zdobyciu samych złotych rogów.",react:"Herakles nie miał zdobywać samych rogów.",correct:false,reason:"Miał dostarczyć łanię żywą."}
+]
+}
+]
+},
+{
+title:"4. Dzik Erymantejski",
+goal:"Herakles ma pojmać ogromnego dzika z góry Erymantos. Zwierzę musi zostać dostarczone żywe przed Eurysteusza.",
+steps:[
+{
+story:"Herakles dociera w okolice góry Erymantos. Dzik pustoszy okolicę, a jego siła sprawia, że bezpośredni atak byłby ryzykowny.",
+q:"Jaki był główny cel czwartej pracy Heraklesa?",
+opts:[
+{txt:"Schwytanie dzika żywego i dostarczenie go Eurysteuszowi.",react:"Tak! Nie chodziło o zabicie zwierzęcia, lecz o jego pojmanie.",correct:true},
+{txt:"Zabicie dzika i przyniesienie jego kłów.",react:"To nie odpowiadało warunkom zadania.",correct:false,reason:"Herakles miał dostarczyć żywego dzika."},
+{txt:"Oczyszczenie góry z dzikich zwierząt.",react:"Zadanie dotyczyło konkretnego dzika.",correct:false,reason:"Celem było schwytanie jednego określonego zwierzęcia."}
+]
+},
+{
+story:"Herakles ściga dzika coraz wyżej. W górach zalega śnieg, a zwierzę zaczyna tracić siły podczas ucieczki.",
+q:"W jaki sposób Herakles wykorzystał warunki naturalne?",
+opts:[
+{txt:"Wprowadził dzika w głęboki śnieg, gdzie zwierzę ugrzęzło i osłabło.",react:"Dobrze! Śnieg pomógł Heraklesowi obezwładnić dzika bez zabijania go.",correct:true},
+{txt:"Zwabił dzika do gorących źródeł.",react:"To nie gorące źródła odegrały taką rolę.",correct:false,reason:"Herakles wykorzystał głęboki śnieg na górze."},
+{txt:"Zepchnął dzika z urwiska.",react:"Upadek mógłby zabić zwierzę.",correct:false,reason:"Herakles musiał schwytać dzika żywego."}
+]
+},
+{
+story:"Dzik zostaje schwytany i dostarczony do Myken. Eurysteusz nie spodziewa się takiego widoku.",
+q:"Jak zareagował Eurysteusz na widok schwytanego dzika?",
+opts:[
+{txt:"Przerażony ukrył się w wielkim naczyniu.",react:"Tak! Strach Eurysteusza przed dzikiem stał się charakterystycznym elementem tej historii.",correct:true},
+{txt:"Sam wyszedł, aby dosiąść zwierzę.",react:"Eurysteusz nie wykazał się odwagą wobec bestii.",correct:false,reason:"Władca był przerażony i schował się w naczyniu."},
+{txt:"Rozkazał natychmiast wypuścić dzika.",react:"To nie jest charakterystyczna reakcja Eurysteusza.",correct:false,reason:"Zapamiętaj, gdzie ukrył się władca."}
+]
+}
+]
+},
+{
+title:"5. Stajnie Augiasza",
+goal:"Herakles ma oczyścić stajnie króla Augiasza. Przez wiele lat gromadziły się w nich ogromne ilości nawozu. Zadanie ma zostać wykonane w ciągu jednego dnia.",
+steps:[
+{
+story:"Stajesz przed stajniami Augiasza. Liczba zwierząt i nagromadzonych nieczystości sprawia, że ręczne sprzątanie zajęłoby bardzo dużo czasu.",
+q:"Co sprawiało, że oczyszczenie stajni było tak trudne?",
+opts:[
+{txt:"Przez wiele lat nie usuwano nagromadzonego nawozu.",react:"Zgadza się! Wieloletnie zaniedbanie doprowadziło do ogromnego nagromadzenia nieczystości.",correct:true},
+{txt:"W stajniach znajdowały się magiczne potwory.",react:"Nie potwory były przyczyną problemu.",correct:false,reason:"Trudność wynikała z wieloletniego zaniedbania."},
+{txt:"Stajnie znajdowały się pod ziemią.",react:"Ich położenie nie było przyczyną problemu.",correct:false,reason:"Najważniejsza była ilość nagromadzonych nieczystości."}
+]
+},
+{
+story:"Herakles dostrzega rzeki przepływające w pobliżu. Zamiast sprzątać łopatą, postanawia wykorzystać siłę natury.",
+q:"Jakie rzeki skierował przez stajnie Herakles?",
+opts:[
+{txt:"Alfejos i Penejos.",react:"Właśnie te rzeki przepłynęły przez stajnie i usunęły nieczystości.",correct:true},
+{txt:"Styx i Acheront.",react:"To rzeki związane ze światem podziemnym.",correct:false,reason:"Chodzi o rzeki przepływające w pobliżu stajni Augiasza."},
+{txt:"Nil i Tyber.",react:"Te rzeki nie są związane z pracą Heraklesa.",correct:false,reason:"Właściwe nazwy to Alfejos i Penejos."}
+]
+},
+{
+story:"Woda przepływa przez stajnie i usuwa nawóz. Zadanie zostaje wykonane, lecz Eurysteusz nie chce uznać go za pełnoprawną pracę.",
+q:"Dlaczego Eurysteusz zakwestionował wykonanie zadania?",
+opts:[
+{txt:"Herakles miał otrzymać zapłatę od Augiasza za wykonanie pracy.",react:"Zgadza się! Eurysteusz uznał, że praca wykonana za wynagrodzenie nie powinna być zaliczona.",correct:true},
+{txt:"Herakles oczyścił tylko połowę stajni.",react:"Stajnie zostały oczyszczone dzięki przepływowi rzek.",correct:false,reason:"Spór dotyczył warunków wykonania pracy, a nie jej skuteczności."},
+{txt:"Herakles użył pomocy Ateny.",react:"Nie to było powodem zakwestionowania pracy.",correct:false,reason:"Chodziło o obiecaną nagrodę od Augiasza."}
+]
+}
+]
+},
+{
+title:"6. Ptaki Stymfalijskie",
+goal:"W okolicach jeziora Stymfalos żyją groźne ptaki, które atakują ludzi. Herakles musi wypłoszyć je z ukrycia, aby móc się z nimi rozprawić.",
+steps:[
+{
+story:"Ptaki kryją się w gęstwinie i trudno do nich dotrzeć. Herakles nie może skutecznie zaatakować ich, gdy pozostają ukryte.",
+q:"Która bogini pomaga Heraklesowi w przygotowaniu sposobu na wypłoszenie ptaków?",
+opts:[
+{txt:"Atena.",react:"Bogini wspiera Heraklesa, przekazując mu narzędzie do wywołania hałasu.",correct:true},
+{txt:"Hera.",react:"Hera nie pomaga Heraklesowi w tej pracy.",correct:false,reason:"Pomyśl, która bogini wspierała herosa."},
+{txt:"Afrodyta.",react:"Afrodyta nie odgrywa tej roli w micie.",correct:false,reason:"Właściwą boginią jest Atena."}
+]
+},
+{
+story:"Herakles otrzymuje niezwykłe narzędzie. Jego zadaniem jest zmuszenie ptaków do opuszczenia kryjówek.",
+q:"Czego używa Herakles, aby wypłoszyć ptaki?",
+opts:[
+{txt:"Brązowych grzechotek, których hałas płoszy ptaki.",react:"Zgadza się! Ogromny hałas zmusza ptaki do opuszczenia kryjówek.",correct:true},
+{txt:"Złotego rogu, który usypia zwierzęta.",react:"Nie taki przedmiot wykorzystuje Herakles.",correct:false,reason:"Narzędzie miało wydawać bardzo głośny dźwięk."},
+{txt:"Lustra odbijającego światło słoneczne.",react:"Światło nie jest rozwiązaniem opisanym w micie.",correct:false,reason:"Ptaki zostały wypłoszone przez hałas."}
+]
+},
+{
+story:"Ptaki wzbijają się w powietrze. Herakles może teraz wykorzystać swoją broń, gdy przeciwnicy nie są już ukryci w lesie.",
+q:"Co robi Herakles, gdy ptaki opuszczają kryjówki?",
+opts:[
+{txt:"Strzela do nich z łuku.",react:"Herakles wykorzystuje łuk, gdy ptaki znajdują się w powietrzu.",correct:true},
+{txt:"Chwyta je gołymi rękami.",react:"Ptaki są zbyt liczne i niebezpieczne, by łapać je w ten sposób.",correct:false,reason:"Herakles wykorzystuje broń dystansową."},
+{txt:"Zamyka je w jaskini.",react:"Ptaki nie zostają zwabione do jaskini.",correct:false,reason:"Po wypłoszeniu z kryjówek Herakles atakuje je z dystansu."}
+]
+}
+]
+},
+{
+title:"7. Byk Kreteński",
+goal:"Herakles zostaje wysłany na Kretę, aby schwytać niezwykłego byka. Zwierzę jest związane z królem Minosem i bogiem Posejdonem.",
+steps:[
+{
+story:"Byk sieje spustoszenie na Krecie. Jego historia wiąże się z królem Minosem i obietnicą złożoną bogu morza.",
+q:"Z którym bogiem związany był byk kreteński?",
+opts:[
+{txt:"Z Posejdonem.",react:"Byk był związany z Posejdonem i historią obietnicy Minosa.",correct:true},
+{txt:"Z Apollinem.",react:"Apollo nie jest bogiem związanym z tym bykiem.",correct:false,reason:"Pomyśl o bogu morza."},
+{txt:"Z Aresem.",react:"Ares nie odgrywa tej roli w historii byka.",correct:false,reason:"Chodzi o Posejdona."}
+]
+},
+{
+story:"Minos nie spełnił woli Posejdona i nie złożył byka w ofierze. Zwierzę stało się niebezpieczne i zaczęło pustoszyć Kretę.",
+q:"Dlaczego Posejdon rozgniewał się na Minosa?",
+opts:[
+{txt:"Minos zatrzymał dla siebie byka zamiast złożyć go w ofierze.",react:"Król nie dotrzymał zobowiązania wobec boga.",correct:true},
+{txt:"Minos odmówił oddania tronu.",react:"To nie było przyczyną gniewu Posejdona.",correct:false,reason:"Chodzi o niewypełnioną obietnicę dotyczącą byka."},
+{txt:"Minos zniszczył świątynię Posejdona.",react:"Nie taki czyn wywołał konflikt.",correct:false,reason:"Przypomnij sobie, co król miał zrobić ze zwierzęciem."}
+]
+},
+{
+story:"Herakles staje naprzeciw potężnego zwierzęcia. Musi je obezwładnić i dostarczyć do Eurysteusza.",
+q:"Co stało się z bykiem po wykonaniu zadania przez Heraklesa?",
+opts:[
+{txt:"Został później uwolniony i trafił do okolic Maratonu.",react:"Zgadza się! Byk pojawia się później w opowieściach związanych z Maratonem.",correct:true},
+{txt:"Został złożony w ofierze Posejdonowi przez Heraklesa.",react:"Herakles nie zakończył w ten sposób historii byka.",correct:false,reason:"Byk został później uwolniony."},
+{txt:"Został zamieniony w gwiazdozbiór przez Atenę.",react:"To nie jest dalszy los byka w tej historii.",correct:false,reason:"Po uwolnieniu byk pojawia się w okolicach Maratonu."}
+]
+}
+]
+},
+{
+title:"8. Klacze Diomedesa",
+goal:"Herakles ma zdobyć klacze należące do trackiego króla Diomedesa. Zwierzęta są wyjątkowo niebezpieczne, ponieważ żywią się ludzkim mięsem.",
+steps:[
+{
+story:"Herakles dociera do Tracji. Dowiaduje się, że klacze króla Diomedesa nie są zwykłymi końmi.",
+q:"Co wyróżniało klacze Diomedesa?",
+opts:[
+{txt:"Żywiły się ludzkim mięsem.",react:"Zgadza się! Ich okrucieństwo czyniło je wyjątkowo groźnymi.",correct:true},
+{txt:"Potrafiły latać nad morzem.",react:"Klacze nie miały skrzydeł.",correct:false,reason:"Ich niezwykłość polegała na sposobie odżywiania."},
+{txt:"Były nieśmiertelne i nie można ich było schwytać.",react:"Nieśmiertelność nie była ich cechą.",correct:false,reason:"Najważniejsze było to, że żywiły się ludzkim mięsem."}
+]
+},
+{
+story:"Herakles zdobywa klacze, ale nadal musi znaleźć sposób, by je ujarzmić. Ich właściciel, Diomedes, jest okrutnym władcą.",
+q:"Kim był Diomedes?",
+opts:[
+{txt:"Królem Tracji i właścicielem klaczy.",react:"Tak! Diomedes władał Tracją i posiadał niebezpieczne zwierzęta.",correct:true},
+{txt:"Królem Krety, który posiadał byka.",react:"Pomyliłeś go z Minosem.",correct:false,reason:"Diomedes był władcą Tracji."},
+{txt:"Strażnikiem ogrodu Hesperyd.",react:"Nie był związany z ogrodem złotych jabłek.",correct:false,reason:"Jego historia wiąże się z mięsożernymi klaczami."}
+]
+},
+{
+story:"Walka z Diomedesem dobiega końca. W jednej z wersji mitu Herakles wykorzystuje okrucieństwo króla przeciwko niemu samemu.",
+q:"Co według znanej wersji mitu Herakles zrobił z Diomedesem?",
+opts:[
+{txt:"Rzucił go na pożarcie jego własnym klaczom.",react:"Tak! Diomedes sam stał się ofiarą zwierząt, które karmił ludźmi.",correct:true},
+{txt:"Zamienił go w kamień za pomocą głowy Meduzy.",react:"To nie jest historia związana z Perseuszem.",correct:false,reason:"Herakles wykorzystał klacze przeciwko ich właścicielowi."},
+{txt:"Oddał go w niewolę Eurysteuszowi.",react:"Nie taki los spotkał Diomedesa w tej opowieści.",correct:false,reason:"Według znanej wersji został pożarty przez własne klacze."}
+]
+}
+]
+},
+{
+title:"9. Pas Hipolity",
+goal:"Herakles ma zdobyć pas należący do Hipolity, królowej Amazonek. Zadanie prowadzi go do krainy wojowniczych kobiet, a jego przebieg komplikuje podstęp Hery.",
+steps:[
+{
+story:"Herakles przybywa do kraju Amazonek. Ich królową jest Hipolita, która posiada niezwykły pas.",
+q:"Kto według mitu podarował Hipolicie jej pas?",
+opts:[
+{txt:"Ares, bóg wojny.",react:"Zgadza się! Pas był darem boga wojny.",correct:true},
+{txt:"Zeus, władca Olimpu.",react:"Zeus nie był darczyńcą pasa.",correct:false,reason:"Pas był związany z Aresem."},
+{txt:"Hermes, posłaniec bogów.",react:"Hermes nie podarował Hipolicie pasa.",correct:false,reason:"Chodzi o boga wojny."}
+]
+},
+{
+story:"Hipolita początkowo jest gotowa oddać pas Heraklesowi. Sytuację zmienia jednak ingerencja Hery, która podsyca nieufność Amazonek.",
+q:"W jaki sposób Hera doprowadziła do konfliktu?",
+opts:[
+{txt:"Rozpuściła pogłoskę, że Herakles zamierza porwać Hipolitę.",react:"Dobrze! Podstęp Hery zmienił nastawienie Amazonek wobec herosa.",correct:true},
+{txt:"Przekonała Hipolitę, że Herakles jest jej bratem.",react:"Nie takie kłamstwo doprowadziło do konfliktu.",correct:false,reason:"Hera wzbudziła podejrzenie, że Herakles chce porwać królową."},
+{txt:"Zniszczyła pas i oskarżyła o to Heraklesa.",react:"Nie zniszczenie pasa było przyczyną walki.",correct:false,reason:"Hera rozpowszechniła fałszywą informację o zamiarach Heraklesa."}
+]
+},
+{
+story:"Amazonki ruszają do walki. Wydarzenia wymykają się spod kontroli, a Herakles musi zdobyć pas.",
+q:"Co pokazuje historia pasa Hipolity?",
+opts:[
+{txt:"Jak podstęp bogini może zmienić przebieg wydarzeń i doprowadzić do konfliktu.",react:"Dobrze! Interwencja Hery miała kluczowe znaczenie dla przebiegu tej pracy.",correct:true},
+{txt:"Że Hipolita od początku planowała zabić Heraklesa.",react:"Początkowo królowa była gotowa oddać pas.",correct:false,reason:"Konflikt rozpoczął się po ingerencji Hery."},
+{txt:"Że Amazonki nie posiadały żadnej władzy nad swoją królową.",react:"Nie to jest głównym znaczeniem tej historii.",correct:false,reason:"Ważną rolę odgrywa podstęp Hery."}
+]
+}
+]
+},
+{
+title:"10. Trzoda Geriona",
+goal:"Herakles ma zdobyć czerwone woły Geriona, który mieszka na dalekiej wyspie Eryteja. Wyprawa prowadzi go na zachodnie krańce znanego świata.",
+steps:[
+{
+story:"Herakles wyrusza na daleką wyprawę. Musi dotrzeć na wyspę, na której znajduje się trzoda potężnego Geriona.",
+q:"Gdzie znajdowała się wyspa Eryteja?",
+opts:[
+{txt:"Na dalekim zachodzie, za granicami znanego świata.",react:"Zgadza się! Wyprawa prowadziła Heraklesa na zachodnie krańce świata.",correct:true},
+{txt:"Na Morzu Czarnym, niedaleko Tracji.",react:"To nie tam znajdowała się Eryteja.",correct:false,reason:"Wyspa leżała daleko na zachodzie."},
+{txt:"Na Krecie, w pobliżu pałacu Minosa.",react:"Pomyliłeś ją z miejscem siódmej pracy.",correct:false,reason:"Eryteja była odległą wyspą na zachodzie."}
+]
+},
+{
+story:"Na drodze do trzody stoi potężny strażnik. Herakles musi pokonać nie tylko Geriona, ale także jego opiekunów.",
+q:"Jak nazywał się dwugłowy pies pilnujący trzody Geriona?",
+opts:[
+{txt:"Orthros.",react:"Tak! Orthros był groźnym psem strzegącym trzody.",correct:true},
+{txt:"Cerber.",react:"Cerber pilnował wejścia do świata podziemnego.",correct:false,reason:"Cerber był strażnikiem Hadesu, a nie trzody Geriona."},
+{txt:"Kerberos.",react:"To inna forma imienia Cerbera.",correct:false,reason:"Psem Geriona był Orthros."}
+]
+},
+{
+story:"Herakles staje przed Gerionem. Przeciwnik jest niezwykły i znacznie różni się od zwykłego człowieka.",
+q:"Co wyróżniało Geriona?",
+opts:[
+{txt:"Miał trzy połączone ze sobą ciała.",react:"Zgadza się! Gerion był potężnym przeciwnikiem o potrójnej postaci.",correct:true},
+{txt:"Miał trzy głowy i ogon węża.",react:"Pomyliłeś go z innymi potworami.",correct:false,reason:"Gerion wyróżniał się trzema ciałami."},
+{txt:"Był olbrzymem o stu rękach.",react:"To nie była cecha Geriona.",correct:false,reason:"Jego niezwykłość polegała na potrójnym ciele."}
+]
+}
+]
+},
+{
+title:"11. Złote Jabłka Hesperyd",
+goal:"Herakles ma zdobyć złote jabłka z ogrodu Hesperyd. Zadanie wymaga dotarcia na krańce świata i poradzenia sobie ze strażnikami niezwykłego ogrodu.",
+steps:[
+{
+story:"Herakles wyrusza w daleką podróż. Złote jabłka znajdują się w ogrodzie, którym opiekują się nimfy Hesperydy.",
+q:"Kim były Hesperydy?",
+opts:[
+{txt:"Nimfami opiekującymi się ogrodem złotych jabłek.",react:"Zgadza się! Hesperydy były związane z ogrodem i jego owocami.",correct:true},
+{txt:"Wojowniczkami strzegącymi wejścia do Hadesu.",react:"To nie one pilnowały świata podziemnego.",correct:false,reason:"Hesperydy były nimfami związanymi z ogrodem."},
+{txt:"Córkami króla Eurysteusza.",react:"Nie były związane z rodem Eurysteusza.",correct:false,reason:"Były nimfami opiekującymi się złotymi jabłkami."}
+]
+},
+{
+story:"Ogród jest strzeżony przez smoka lub węża Ladona. Herakles musi zdobyć owoce, nie tracąc czasu na bezcelową walkę.",
+q:"Jak nazywał się strażnik drzewa ze złotymi jabłkami?",
+opts:[
+{txt:"Ladon.",react:"Dobrze! Ladon pilnował drzewa ze złotymi jabłkami.",correct:true},
+{txt:"Orthros.",react:"Orthros pilnował trzody Geriona.",correct:false,reason:"Strażnikiem ogrodu był Ladon."},
+{txt:"Hydra.",react:"Hydra była potworem z bagien Lerny.",correct:false,reason:"Ogród Hesperyd strzegł Ladon."}
+]
+},
+{
+story:"Herakles spotyka Atlasa, który może zdobyć jabłka. Atlas zgadza się pomóc, ale po powrocie nie chce ponownie dźwigać sklepienia niebieskiego.",
+q:"Jak Herakles przechytrzył Atlasa?",
+opts:[
+{txt:"Poprosił Atlasa, by na chwilę przejął niebo, a potem poprosił go o ponowne podtrzymanie ciężaru, samemu odchodząc z jabłkami.",react:"Zgadza się! Herakles wykorzystał spryt, aby odzyskać wolność i zdobyć owoce.",correct:true},
+{txt:"Pokonał Atlasa w pojedynku na pięści.",react:"Nie siła, lecz podstęp pozwolił Heraklesowi rozwiązać problem.",correct:false,reason:"Herakles poprosił Atlasa o chwilowe przejęcie ciężaru."},
+{txt:"Zabrał jabłka, gdy Atlas spał.",react:"To nie tak przebiegała scena z Atlasem.",correct:false,reason:"Herakles zastosował podstęp związany z ciężarem nieba."}
+]
+}
+]
+},
+{
+title:"12. Cerber z Podziemi",
+goal:"Ostatnia praca prowadzi Heraklesa do królestwa Hadesa. Ma sprowadzić na powierzchnię Cerbera, trójgłowego strażnika świata zmarłych. Zadanie ma zostać wykonane bez użycia broni.",
+steps:[
+{
+story:"Herakles dociera do granic świata podziemnego. Przed nim znajduje się wejście do królestwa zmarłych, którego strzeże potężny pies.",
+q:"Jaką funkcję pełnił Cerber w świecie mitologicznym?",
+opts:[
+{txt:"Strzegł wejścia do świata zmarłych i pilnował, by dusze nie opuszczały Hadesu.",react:"Zgadza się! Cerber był strażnikiem krainy umarłych.",correct:true},
+{txt:"Pilnował ogrodu złotych jabłek.",react:"To zadanie należało do Ladona.",correct:false,reason:"Cerber strzegł wejścia do królestwa Hadesa."},
+{txt:"Był posłańcem Zeusa na Olimpie.",react:"Cerber nie pełnił funkcji posłańca.",correct:false,reason:"Jego zadaniem było pilnowanie świata podziemnego."}
+]
+},
+{
+story:"Herakles staje przed Hadesem. Chce zabrać Cerbera na powierzchnię, ale musi przestrzegać warunków postawionych przez władcę podziemi.",
+q:"Jaki warunek musiał spełnić Herakles podczas pojmania Cerbera?",
+opts:[
+{txt:"Miał schwytać go bez użycia broni.",react:"Tak! Herakles musiał wykazać się siłą i odwagą bez posługiwania się bronią.",correct:true},
+{txt:"Miał najpierw pokonać wszystkich zmarłych wojowników.",react:"Nie taki warunek postawił Hades.",correct:false,reason:"Najważniejszy był zakaz używania broni."},
+{txt:"Miał pozostawić jedną głowę Cerbera w podziemiach.",react:"Nie było takiego warunku.",correct:false,reason:"Herakles miał sprowadzić całego Cerbera bez użycia broni."}
+]
+},
+{
+story:"Herakles ujarzmia Cerbera i wyprowadza go z królestwa zmarłych. Ostatnia praca zostaje wykonana.",
+q:"Co Herakles zrobił z Cerberem po pokazaniu go Eurysteuszowi?",
+opts:[
+{txt:"Odprowadził go z powrotem do świata podziemnego.",react:"Dobrze! Cerber wrócił do swojego miejsca jako strażnik Hadesa.",correct:true},
+{txt:"Pozostawił go w pałacu Eurysteusza jako strażnika.",react:"Cerber nie został na powierzchni.",correct:false,reason:"Po wykonaniu zadania Herakles oddał go z powrotem do podziemi."},
+{txt:"Zabił go, aby nigdy więcej nie pilnował Hadesu.",react:"Zadanie nie polegało na zabiciu Cerbera.",correct:false,reason:"Herakles miał go schwytać i sprowadzić, a następnie zwrócić."}
+]
+}
+]
+}
 ];
-
 // --- STAN ---
 let state = {
     role: null,
